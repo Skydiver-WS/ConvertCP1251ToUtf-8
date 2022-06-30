@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Main {
+public class CP1251ToUtf8 {
   private static final char[] chasterUTF8 = {1040, 1072, 1041, 1073, 1042, 1074, 1043, 1075, 1044, 1076, 1045, 1077,
     1025, 1105, 1046, 1078, 1047, 1079, 1048, 1080, 1049, 1081, 1050, 1082, 1051, 1083, 1052,
     1084, 1053, 1085, 1054, 1086, 1055, 1087, 1056, 1088, 1057, 1089, 1058, 1090, 1059, 1091,
@@ -13,21 +12,17 @@ public class Main {
     1078, 8212, 1079, 65533, 1080, 8482, 1081, 1113, 1082, 8250, 1083, 1114, 1084, 1116, 1085, 1115, 1086, 1119, 1087};
   private static final ArrayList<Character> newText = new ArrayList<>();
 
-  public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-    String input = scanner.nextLine();
+  public static String text(String input) {
     char[] inputText = input.toCharArray();
-
     for (char c : inputText) {
       addUtf8(c);
     }
-
     StringBuilder str = new StringBuilder();
     for (Character c : newText) {
       str.append(c);
     }
     newText.clear();
-    System.out.println(str);
+    return String.valueOf(str);
   }
 
   private static void addUtf8(char c) {
