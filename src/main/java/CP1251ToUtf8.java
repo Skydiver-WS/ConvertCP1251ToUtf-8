@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CP1251ToUtf8 {
   private static final char[] chasterUTF8 = {1040, 1072, 1041, 1073, 1042, 1074, 1043, 1075, 1044, 1076, 1045, 1077,
@@ -13,16 +15,22 @@ public class CP1251ToUtf8 {
   private static final ArrayList<Character> newText = new ArrayList<>();
 
   public static String text(String input) {
-    char[] inputText = input.toCharArray();
-    for (char c : inputText) {
-      addUtf8(c);
+    Pattern pattern = Pattern.compile("Windows");
+    Matcher matcher = pattern.matcher(System. getProperty("os.name"));
+    if (matcher.find()) {
+      char[] inputText = input.toCharArray();
+      for (char c : inputText) {
+        addUtf8(c);
+      }
+      StringBuilder str = new StringBuilder();
+      for (Character c : newText) {
+        str.append(c);
+      }
+      newText.clear();
+      return String.valueOf(str);
+    }else {
+      return input;
     }
-    StringBuilder str = new StringBuilder();
-    for (Character c : newText) {
-      str.append(c);
-    }
-    newText.clear();
-    return String.valueOf(str);
   }
 
   private static void addUtf8(char c) {
