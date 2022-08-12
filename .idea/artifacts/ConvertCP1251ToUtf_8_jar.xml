@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ConvertCP1251ToUtf-8.jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ConvertCP1251ToUtf_8_jar</output-path>
+    <root id="archive" name="ConvertCP1251ToUtf-8.jar">
+      <element id="module-output" name="ConvertCP1251ToUtf-8" />
+    </root>
+  </artifact>
+</component>
